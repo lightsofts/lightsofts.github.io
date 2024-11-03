@@ -1,6 +1,6 @@
 ## Privacy Policy Statement for LightSofts
 
-###  Effective Date: 2024-11-03
+###  Effective Date: November 3, 2024
 
 At LightSofts (lightsofts.tech), we prioritize your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information when you visit our website and use our mobile application.
 
