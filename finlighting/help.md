@@ -4,9 +4,10 @@
 
 `FinLighting` provides multiple ways to locate files:
 
-Use arrow keys to navigate through files and folders.
-Directly search for files in the text box.
-Enter a string starting with "/" in the text box to filter files or folders.
+1. Use arrow keys to navigate through files and folders.
+2. Directly search for files in the text box.
+3. Enter a string starting with "/" in the text box to filter files or folders.
+
 ### Settings
 You can open the settings window from the menu bar.
 
