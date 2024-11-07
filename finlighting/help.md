@@ -13,12 +13,16 @@ You can open the settings window from the menu bar.
 
 #### General Settings
 
-<img src = "images/settings.png" style="width:400;height:300">
+<img src = "images/settings.png" style="width:300;height:200">
 
 General includes some basic configuration options:
 
 1. `Launch At Login` : Allow `FinLighting` active at login
-2. `Action on Selected File` : Choose the action triggered by pressing Enter Key or the shortcut (Command + 1) on a selected file. If you select Copy and parse, you need to grant `FinLighting` accessibility permissions.
+2. `Action on Selected File` : Choose the action triggered by pressing Enter Key or the shortcut (Command + 1) on a selected file. 
+    
+    1. Copy: Copy selected file to Clipboard
+    2. Copy and parse: Copy selected file and parse it to your workspace. This operation requires enabling accessibility permissions
+
 3. Maxnum Of Search Result: The maximum number of displayed search results.
 
 #### Target Folders
@@ -42,7 +46,7 @@ For example:
 
 Once you create a `Target Folder` and binding a shortcu to it, you can use the shortcut to open a `Search Window` everywhere 
 
-<img src = "images/search.png" style="width:400;height:300">
+<img src = "images/search.png" style="width:300;height:200">
 
 The search window has two main sections:
 
@@ -59,11 +63,11 @@ You have three ways to toggle folders or select file aginst `File List`
 
 You can use the Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrows to select or enter folders and then press Enter Key to copy the selected file.
 
-<img src = "images/search.png" style="width:400;height:300">
+<img src = "images/search.png" style="width:300;height:200">
 
-#### Direct File Search
+#### Search File Directly
 
-To search a file, you can directly type the name of the file you're looking for in the Input Field
+To search a file, you can simply type the name of the file you're looking for in the Input Field
 
 <img src = "images/search-direct.png" style="width:400;height:300">
 
@@ -71,7 +75,7 @@ To search a file, you can directly type the name of the file you're looking for 
 
 You can type a string starting with "/" in the `Input Field` to filter folders or files
 
-<img src = "images/saerch-filter.png" style="width:400;height:300">
+<img src = "images/saerch-filter.png" style="width:300;height:200">
 
 Like image above, we have a file whose path is Documents/instroduce/icon.PNG, you can type `/doc/ins/inc` to locate the file, and yes you don't need to type entire path name or file name
 
