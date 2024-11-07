@@ -6,7 +6,7 @@
 
 1. Use Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrow keys to navigate through files and folders.
 2. Directly search for files in the text box.
-3. Enter a string starting with "/" in the text box to filter files or folders.
+3. Type a string starting with "/" in the text box to filter files or folders.
 
 ### Settings
 You can open the settings window from the menu bar.
@@ -50,7 +50,7 @@ Once you create a `Target Folder` and binding a shortcu to it, you can use the s
 
 The search window has two main sections:
 
-1. Input Field: Type a file name directly to search, or enter text starting with "/" to quickly filter files or folders.
+1. Input Field: Type a file name directly to search, or type text starting with "/" to quickly filter files or folders.
 2. File List: The first column shows the parent folder, the second column shows the current folder, and the third column displays subfolders.
 
 You have three ways to toggle folders or select file aginst `File List`
