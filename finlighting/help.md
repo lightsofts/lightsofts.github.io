@@ -4,7 +4,7 @@
 
 `FinLighting` provides multiple ways to locate files:
 
-1. Use arrow keys to navigate through files and folders.
+1. Use Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrow keys to navigate through files and folders.
 2. Directly search for files in the text box.
 3. Enter a string starting with "/" in the text box to filter files or folders.
 
@@ -17,9 +17,9 @@ You can open the settings window from the menu bar.
 
 General includes some basic configuration options:
 
-1. Launch At Login: Allow `FinLighting` active at login
-2. Action on Selected File: Choose the action triggered by pressing Enter Key or the shortcut (Command + 1) on a selected file. If you select Copy and parse, you need to grant `FinLighting` accessibility permissions.
-3. Maxnum Of Search Result: Set the maximum number of displayed search results.
+1. `Launch At Login` : Allow `FinLighting` active at login
+2. `Action on Selected File` : Choose the action triggered by pressing Enter Key or the shortcut (Command + 1) on a selected file. If you select Copy and parse, you need to grant `FinLighting` accessibility permissions.
+3. Maxnum Of Search Result: The maximum number of displayed search results.
 
 #### Target Folders
 
@@ -34,42 +34,47 @@ For example:
 1. work/target hides the target folder under any parent directory named work.
 2. *parentFolder*/target hides target folders under any parent folder whose name includes "parentFolder".
 3. *target* hides folders with "target" in their name.
-4. .* hides folders starting with a dot (i.e., hidden folders).
+4. .* hides folders starting with a dot (that means hidden folders).
 
 ### Using the Search Window
 
 #### Overview
 
-<img src = "images/search.png" style="width:400;height:300">
+Once you create a `Target Folder` and binding a shortcu to it, you can use the shortcut to open a `Search Window` everywhere 
 
+<img src = "images/search.png" style="width:400;height:300">
 
 The search window has two main sections:
 
-1. Input field: Type a file name directly to search. You can also enter text starting with "/" to quickly filter files or folders.
-2. File list: The first column shows the parent folder, the second column shows the current folder, and the third column displays subfolders.
+1. Input Field: Type a file name directly to search, or enter text starting with "/" to quickly filter files or folders.
+2. File List: The first column shows the parent folder, the second column shows the current folder, and the third column displays subfolders.
 
-You have three ways to toggle folders or select file aginst `File list`
+You have three ways to toggle folders or select file aginst `File List`
 
-1. Using Arrow keys
+1. Using Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrow keys
 2. Using shortcut like command+1,command+2
 3. Typing / into `Input field` to filter folders or files 
 
 #### Navigating Folders with Arrow Keys
 
-You can use the arrow keys to enter folders and then press Enter to copy the selected file.
+You can use the Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrows to select or enter folders and then press Enter Key to copy the selected file.
 
 <img src = "images/search.png" style="width:400;height:300">
 
 #### Direct File Search
-Simply type the name of the file you're looking for in the search box, use the up/down arrow keys to select the file, and press Enter to copy it.
+
+To search a file, you can directly type the name of the file you're looking for in the Input Field
 
 <img src = "images/search-direct.png" style="width:400;height:300">
 
 #### Filtering Files or Folders with "/"
-You can enter a string starting with "/" in the input field to filter folder . Generally, you don't need to type the entire folder name
+
+You can type a string starting with "/" in the `Input Field` to filter folders or files
 
 <img src = "images/saerch-filter.png" style="width:400;height:300">
 
+Like image above, we have a file whose path is Documents/instroduce/icon.PNG, you can type `/doc/ins/inc` to locate the file, and yes you don't need to type entire path name or file name
+
 
 ## Contact
-If you have any suggestions or questions, please contact lightsofts@hotmail.com.
+If you have any suggestions or questions, please contact me at lightsofts@hotmail.com.
