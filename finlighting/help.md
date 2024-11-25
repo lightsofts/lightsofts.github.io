@@ -1,3 +1,8 @@
+---
+title: "FinLighting"
+toc: true
+---
+
 ## Introduction
 
 `FinLighting` is an assistant tool that allows you to open a file search window at anytime, anywhere. You can quickly locate file and copy it to your current workspace (which requires enabling accessibility permissions).
