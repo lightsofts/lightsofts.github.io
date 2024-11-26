@@ -138,10 +138,15 @@ image::images/filter.jpg[500,600]
 
 Like the image above, we have a file whose path is xcodeProjects/demo, you can type `/xco/demo` to locate the file, and yes you don't need to type the entire path name or file name
 
-If you add Match Rule to `Match Rule`: `xcodeProjects/*`, and specify the actions to open with xcode
+If you add rule to `Match Rule`: `pass:[xcodeProjects/**/*.xcodeproj]`, and specify the action
+to `open with xcode`
 in  <<specify-custom-actions,Specify custom actions>>
 , you can immediately open the folder with xcode
 
+== Get FinLighting
+
+[link=https://apps.apple.com/us/app/finlighting/id6737697840?l=zh-Hans-CN&mt=12]
+image::images/app-store-badge.svg[]
 
 == Contact
 If you have any suggestions or questions, please contact me at lightsofts@hotmail.com.
