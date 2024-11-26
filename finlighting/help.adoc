@@ -3,9 +3,12 @@
 :toclevels: 4
 :!last-update-label:
 :nofooter:
+
 = FinLighting Documentation
 
-
+++++
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+++++
 ++++
 <video width="800" height="400" controls>
   <source src="video/preview.m4v" type="video/mp4">

@@ -1,7 +1,12 @@
 
 :!last-update-label:
 :nofooter:
+
 = Privacy Policy Statement for LightSofts
+
+++++
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+++++
 
 ==  Effective Date: November 3, 2024
 
