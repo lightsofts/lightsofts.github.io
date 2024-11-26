@@ -443,17 +443,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_settings">Settings</a>
 <ul class="sectlevel2">
-<li><a href="#_general_settings">General Settings</a></li>
-<li><a href="#_target_folders">Target Folders</a></li>
+<li><a href="#_general">General</a>
+<ul class="sectlevel3">
+<li><a href="#_action_on_selected_file">Action on Selected File</a></li>
+<li><a href="#specify-custom-actions">Specify custom actions</a></li>
+</ul>
+</li>
+<li><a href="#_targets">Targets</a>
+<ul class="sectlevel3">
 <li><a href="#_not_displayed_subfolder">Not Displayed Subfolder</a></li>
 </ul>
 </li>
-<li><a href="#_using_the_search_window">Using the Search Window</a>
+</ul>
+</li>
+<li><a href="#_browsing_window">Browsing window</a>
 <ul class="sectlevel2">
 <li><a href="#_overview">Overview</a></li>
-<li><a href="#_navigating_folders_with_arrow_keys">Navigating Folders with Arrow Keys</a></li>
-<li><a href="#_search_file_directly">Search File Directly</a></li>
-<li><a href="#_filtering_items">Filtering items</a></li>
+<li><a href="#_search_model">Search model</a></li>
+<li><a href="#_filter_model">Filter model</a></li>
 </ul>
 </li>
 <li><a href="#_contact">Contact</a></li>
@@ -461,25 +468,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<video width="800" height="400" controls>
+  <source src="video/preview.m4v" type="video/mp4">
+</video>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>FinLighting</code> is an assistant tool that allows you to open a file search window at anytime, anywhere. You can quickly locate file and copy it to your current workspace (which requires enabling accessibility permissions).</p>
+<p><code>FinLighting</code> is a tool that allows you to open a file search window at anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).</p>
 </div>
 <div class="paragraph">
-<p><code>FinLighting</code> provides multiple ways to locate files:</p>
+<p><code>FinLighting</code> has many features:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrow keys to navigate through files and folders.</p>
+<p>Binding a shortcut to a folder, and then activate file <code>browsing window</code> by the shortcut everywhere</p>
 </li>
 <li>
-<p>Directly search for files in the text box.</p>
+<p>Type words to search files in <code>browsing window</code></p>
 </li>
 <li>
-<p>Type a string starting with "/" in the text box to filter files or folders.</p>
+<p>Filter file in <code>browsing window</code></p>
+</li>
+<li>
+<p>Specify custom actions on selected files or folders</p>
 </li>
 </ol>
 </div>
@@ -489,10 +506,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_settings">Settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can open the settings window from the menu bar.</p>
+<p>You can open the settings window from the menu bar.
+Settings contains two parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>General, some software also called <code>Global</code>, to set action settings</p>
+</li>
+<li>
+<p>Target, is to add folders and binding shortcuts to it.</p>
+</li>
+</ol>
 </div>
 <div class="sect2">
-<h3 id="_general_settings">General Settings</h3>
+<h3 id="_general">General</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/settings.png" alt="500" width="600">
@@ -507,30 +535,96 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><code>Launch At Login</code> : Allow <code>FinLighting</code> active at login</p>
 </li>
 <li>
-<p><code>Action on Selected File</code> : Choose the action triggered by pressing Enter Key or the shortcut (Command + 1) on a selected file.</p>
+<p><code>Enable File Preview</code> : to preview file.</p>
 </li>
 <li>
-<p>Copy: Copy selected file to Clipboard</p>
+<p><code>Maxnum Of Search Result</code> : The maximum number of displayed search results.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_action_on_selected_file">Action on Selected File</h4>
+<div class="paragraph">
+<p>In this section, you can specify local shortcut for every action,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>For Enter Key</code>: Specify action for Enter key</p>
 </li>
 <li>
-<p>Copy and parse: Copy selected file and parse it to your workspace. This operation requires enabling accessibility permissions</p>
+<p><code>Copy</code>: Copy selected item to Clipboard</p>
 </li>
 <li>
-<p>Maxnum Of Search Result: The maximum number of displayed search results.</p>
+<p><code>Copy Path</code>: Copy path of selected item to Clipboard</p>
+</li>
+<li>
+<p><code>Copy Paste</code> : Copy and paste selected item to work space you are working on</p>
+</li>
+<li>
+<p><code>Move To Trash</code>: Move selected item to trash</p>
+</li>
+<li>
+<p><code>Open</code>: Open selected item</p>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_target_folders">Target Folders</h3>
-<div class="paragraph">
-<p>Target Folders allows you to set up a shortcut key for a directory you want to binding, so you can quickly open the search window by the shortcut.</p>
+<div class="sect3">
+<h4 id="specify-custom-actions">Specify custom actions</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/custom-action.jpg" alt="500" width="400">
 </div>
 </div>
-<div class="sect2">
-<h3 id="_not_displayed_subfolder">Not Displayed Subfolder</h3>
 <div class="paragraph">
-<p>Specify folders that will not be displayed in Search Window</p>
+<p><code>custom actions</code> enable you to execute different actions on various targets. Imagine you have a folder
+named <code>frontendProjects</code> that contains many projects like <code>website-a</code>, <code>website-b</code>,
+you like use <code>Visual Studio Code</code> to open and edit these projects,
+you can specify the <code>Match Rule</code> is <code>frontendProjects/*</code>, <code>Target Type</code> is <code>Folder</code>, <code>Action Type</code> is <code>Open with app</code>,
+and choose <code>Visual Studio Code</code> as <code>Executable Path</code>, once you press the shortcut you specified on <code>website-a</code> or <code>website-b</code>,
+<code>Visual Studio Code</code> will open these folders</p>
+</div>
+<div class="paragraph">
+<p><code>FinLighting</code> supports various <code>Match Rule</code></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>*.png</code> means all png files</p>
+</li>
+<li>
+<p><code>frontendProjects/*</code> means subfolders or subfiles of frontendProjects</p>
+</li>
+<li>
+<p><code>frontendProjects/**</code> means all folders or files in frontendProjects</p>
+</li>
+<li>
+<p><code>frontendProjects/**/*(.jpg|.png)</code> means all jpg or png files in frontendProjects</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can add many rules, but <code>FinLighting</code> always execute actions for first-matched rule
+A blank rule always be matched, <code>FinLighting</code> recommend you add blank rule to last as default action</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_targets">Targets</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/targets.png" alt="500" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Targets allows you to set up a shortcut key for a directory you want to binding,
+so you can quickly open the <code>browsing window</code> by the shortcut.</p>
+</div>
+<div class="sect3">
+<h4 id="_not_displayed_subfolder">Not Displayed Subfolder</h4>
+<div class="paragraph">
+<p>Specify folders that will not be displayed in  <code>browsing window</code></p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -554,13 +648,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_using_the_search_window">Using the Search Window</h2>
+<h2 id="_browsing_window">Browsing window</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview">Overview</h3>
 <div class="paragraph">
-<p>Once you create a <code>Target Folder</code> and binding a shortcu to it, you can use the shortcut to open a <code>Search Window</code> everywhere</p>
+<p>Once you create a <code>Target Folder</code> and binding a shortcut to it, you can use the shortcut to open a <code>browsing window</code> everywhere.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -568,7 +663,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>The search window has two main sections:</p>
+<p><code>browsing window</code> has two main sections:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -581,26 +676,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 <div class="paragraph">
-<p>You have three ways to toggle folders or select file aginst <code>File List</code></p>
+<p><code>browsing window</code> supports two model as well.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Using Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrow keys</p>
+<p>search model: you can type words to search files or folders in the folder you are in</p>
 </li>
 <li>
-<p>Using shortcut like command+1,command+2</p>
-</li>
-<li>
-<p>Typing / into <code>Input field</code> to filter folders or files</p>
+<p>filter model: you can type path like <code>down/img/</code> to filter or enter folders, deleting words means exit folders</p>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_navigating_folders_with_arrow_keys">Navigating Folders with Arrow Keys</h3>
 <div class="paragraph">
-<p>You can use the Up-Arrow, Down-Arrow, Right-Arrow, Left-Arrows to select or enter folders and then press Enter Key to copy the selected file.</p>
+<p>You can switch these modes by <code>Tab</code> keyboard.</p>
+</div>
+<div class="paragraph">
+<p>Except for these models, you can always use Up-Arrow, Down-Arrow, Right-Arrow, and Left-Arrow keys to select a folder or file</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -609,9 +701,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_search_file_directly">Search File Directly</h3>
+<h3 id="_search_model">Search model</h3>
 <div class="paragraph">
-<p>To search a file, you can simply type the name of the file you&#8217;re looking for in the Input Field</p>
+<p>To search a file, you can simply type the name of the file you&#8217;re looking for in the Input Field.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -620,17 +712,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filtering_items">Filtering items</h3>
+<h3 id="_filter_model">Filter model</h3>
 <div class="paragraph">
-<p>You can type a string starting with "/" in the <code>Input Field</code> to filter folders or files</p>
+<p>You can type a string in the <code>Input Field</code> to filter folders or files. once you input one <code>/</code>,
+you will enter the folder you selected</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/saerch-filter.png" alt="500" width="600">
+<img src="images/filter.jpg" alt="500" width="600">
 </div>
 </div>
 <div class="paragraph">
-<p>Like image above, we have a file whose path is Documents/instroduce/icon.PNG, you can type <code>/doc/ins/inc</code> to locate the file, and yes you don&#8217;t need to type entire path name or file name</p>
+<p>Like the image above, we have a file whose path is xcodeProjects/demo, you can type <code>/xco/demo</code> to locate the file, and yes you don&#8217;t need to type the entire path name or file name</p>
+</div>
+<div class="paragraph">
+<p>If you add Match Rule to <code>Match Rule</code>: <code>xcodeProjects/*</code>, and specify the actions to open with xcode
+in  <a href="#specify-custom-actions">Specify custom actions</a>
+, you can immediately open the folder with xcode</p>
 </div>
 </div>
 </div>
