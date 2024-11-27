@@ -20,7 +20,7 @@
 
 == Introduction
 
-`FinLighting` is a tool that allows you to open a file search window at anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).
+`FinLighting` is a tool that allows you to open a file browsing window anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).
 
 `FinLighting` has many features:
 
@@ -93,20 +93,19 @@ so you can quickly open the `browsing window` by the shortcut.
 
 ====  Not Displayed Subfolder
 
-Specify folders that will not be displayed in  `browsing window`
-
+Specify folders that will not be displayed in  `browsing window`, the rule is same with <<specify-custom-actions,Specify custom actions>>
 For example:
 
-1. work/target hides the target folder under any parent directory named work.
-2. *parentFolder*/target hides target folders under any parent folder whose name includes "parentFolder".
-3. *target* hides folders with "target" in their name.
-4. .* hides folders starting with a dot (that means hidden folders).
+. `pass:[*.png]` means all png files
+. `pass:[frontendProjects/*]` means subfolders or subfiles of frontendProjects
+. `pass:[frontendProjects/**]` means all folders or files in frontendProjects
+. `pass:[frontendProjects/**/*(.jpg|.png)]` means all jpg or png files in frontendProjects
 
 == Browsing window
 
 === Overview
 
-Once you create a `Target Folder` and binding a shortcut to it, you can use the shortcut to open a `browsing window` everywhere.
+Once you create a `Target Folder` and binding shortcut to it, you can use the shortcut to open a `browsing window` everywhere.
 
 image::images/search.png[500,600]
 

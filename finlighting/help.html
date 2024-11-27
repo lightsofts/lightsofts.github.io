@@ -481,7 +481,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>FinLighting</code> is a tool that allows you to open a file search window at anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).</p>
+<p><code>FinLighting</code> is a tool that allows you to open a file browsing window anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).</p>
 </div>
 <div class="paragraph">
 <p><code>FinLighting</code> has many features:</p>
@@ -626,24 +626,22 @@ so you can quickly open the <code>browsing window</code> by the shortcut.</p>
 <div class="sect3">
 <h4 id="_not_displayed_subfolder">Not Displayed Subfolder</h4>
 <div class="paragraph">
-<p>Specify folders that will not be displayed in  <code>browsing window</code></p>
-</div>
-<div class="paragraph">
-<p>For example:</p>
+<p>Specify folders that will not be displayed in  <code>browsing window</code>, the rule is same with <a href="#specify-custom-actions">Specify custom actions</a>
+For example:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>work/target hides the target folder under any parent directory named work.</p>
+<p><code>*.png</code> means all png files</p>
 </li>
 <li>
-<p><strong>parentFolder</strong>/target hides target folders under any parent folder whose name includes "parentFolder".</p>
+<p><code>frontendProjects/*</code> means subfolders or subfiles of frontendProjects</p>
 </li>
 <li>
-<p><strong>target</strong> hides folders with "target" in their name.</p>
+<p><code>frontendProjects/**</code> means all folders or files in frontendProjects</p>
 </li>
 <li>
-<p>.* hides folders starting with a dot (that means hidden folders).</p>
+<p><code>frontendProjects/**/*(.jpg|.png)</code> means all jpg or png files in frontendProjects</p>
 </li>
 </ol>
 </div>
@@ -657,7 +655,7 @@ so you can quickly open the <code>browsing window</code> by the shortcut.</p>
 <div class="sect2">
 <h3 id="_overview">Overview</h3>
 <div class="paragraph">
-<p>Once you create a <code>Target Folder</code> and binding a shortcut to it, you can use the shortcut to open a <code>browsing window</code> everywhere.</p>
+<p>Once you create a <code>Target Folder</code> and binding shortcut to it, you can use the shortcut to open a <code>browsing window</code> everywhere.</p>
 </div>
 <div class="imageblock">
 <div class="content">
