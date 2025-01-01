@@ -8,14 +8,15 @@
 
 = FinLighting Documentation
 
-++++
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
-++++
-++++
-<video width="800" height="400" controls>
-  <source src="video/preview.m4v" type="video/mp4">
-</video>
-++++
+== Preview
+
+=== Filter files
+video::video/preview-normal.mov[width=600, height=400]
+
+=== Execute scripts
+
+video::video/preview-script.mov[width=600, height=400]
+
 
 
 == Introduction
@@ -25,9 +26,9 @@
 `FinLighting` has many features:
 
 . Binding a shortcut to a folder, and then activate file `browsing window` by the shortcut everywhere
-. Type words to search files in `browsing window`
-. Filter file in `browsing window`
-. Specify custom actions on selected files or folders
+. Type words to filter file in `browsing window`
+. Specify custom actions on selected files or folders (e.g. Opening folder by vscode)
+. Specify custom apple script on selected files or folders
 
 ==  Settings
 
@@ -55,23 +56,23 @@ General includes some basic configuration options:
 In this section, you can specify local shortcut for every action,
 
 . `For Enter Key`: Specify action for Enter key
-. `Copy`: Copy selected item to Clipboard
 . `Copy Path`: Copy path of selected item to Clipboard
 . `Copy Paste` : Copy and paste selected item to work space you are working on
 . `Move To Trash`: Move selected item to trash
-. `Open`: Open selected item
+. `Run Apple Script`: Run script for folder or file you selected, must follow the  <<Script-spec,Script spec>>
 
 [[specify-custom-actions]]
-==== Specify custom actions
+==== Specify Open Strategy
 
-image::images/custom-action.jpg[500,400]
-
-`custom actions` enable you to execute different actions on various targets. Imagine you have a folder
+`Open Strategy` enable you to execute different actions on various targets. Imagine you have a folder
 named `frontendProjects` that contains many projects like `website-a`, `website-b`,
 you like use `Visual Studio Code` to open and edit these projects,
 you can specify the `Match Rule` is `frontendProjects/*`, `Target Type` is `Folder`, `Action Type` is `Open with app`,
 and choose `Visual Studio Code` as `Executable Path`, once you press the shortcut you specified on `website-a` or `website-b`,
 `Visual Studio Code` will open these folders
+
+You can add the rules for opening specified folders by applications as example above, `Apple script` is supported as well,
+if `Action Type` is `Run with script`, you should choose the path of apple script as `Executable Path`, your script must follow  <<Script-spec,Script spec>>
 
 `FinLighting` supports various `Match Rule`
 
@@ -103,7 +104,7 @@ For example:
 
 == Browsing window
 
-=== Overview
+=== Switch files/folders
 
 Once you create a `Target Folder` and binding shortcut to it, you can use the shortcut to open a `browsing window` everywhere.
 
@@ -114,29 +115,14 @@ image::images/search.png[500,600]
 . Input Field: Type a file name directly to search, or type text starting with "/" to quickly filter files or folders.
 . File List: The first column shows the parent folder, the second column shows the current folder, and the third column displays subfolders.
 
-`browsing window` supports two model as well.
 
-. search model: you can type words to search files or folders in the folder you are in
-. filter model: you can type path like `down/img/` to filter or enter folders, deleting words means exit folders
-
-You can switch these modes by `Tab` keyboard.
-
-Except for these models, you can always use Up-Arrow, Down-Arrow, Right-Arrow, and Left-Arrow keys to select a folder or file
+You can type words to filter folders/files or use arrow keys to change folders/files selected
 
 
-image::images/search.png[500,600]
-
-=== Search model
-
-To search a file, you can simply type the name of the file you're looking for in the Input Field.
+video::video/change-files.mov[width=600, height=400]
 
 
-image::images/search-direct.png[500,600]
-
-=== Filter model
-
-You can type a string in the `Input Field` to filter folders or files. once you input one `/`,
-you will enter the folder you selected
+=== Open folder by custom open strategy
 
 image::images/filter.jpg[500,600]
 
@@ -147,9 +133,35 @@ to `open with xcode`
 in  <<specify-custom-actions,Specify custom actions>>
 , you can immediately open the folder with xcode
 
+
+=== Run apple script
+
+Once you select a file or folder, you can execute actions such as copy, copy path, move to trash, and execute script.
+To execute scripts, you must follow the  <<Script-spec,Script spec>>
+
+video::video/run-script.mov[width=600, height=400]
+
+
+=== Search files
+
+You can use Tab key to switch to search model to search files in folder you selected
+
+[[Script-spec]]
+== Script spec
+. The script must be put to `~/Library/Application Scripts/ink.ypg.FinLighting`
+. The script must be declared as
+[source]
+----
+on doAction(absolutPath)
+    // code
+end doAction
+
+----
+
+
 == Get FinLighting
 
-[link=https://apps.apple.com/us/app/finlighting/id6737697840?l=zh-Hans-CN&mt=12]
+[link=https://apps.apple.com/us/app/finlighting/id6737697840]
 image::images/app-store-badge.svg[]
 
 == Contact

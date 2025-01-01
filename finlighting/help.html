@@ -440,13 +440,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_preview">Preview</a>
+<ul class="sectlevel2">
+<li><a href="#_filter_files">Filter files</a></li>
+<li><a href="#_execute_scripts">Execute scripts</a></li>
+</ul>
+</li>
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_settings">Settings</a>
 <ul class="sectlevel2">
 <li><a href="#_general">General</a>
 <ul class="sectlevel3">
 <li><a href="#_action_on_selected_file">Action on Selected File</a></li>
-<li><a href="#specify-custom-actions">Specify custom actions</a></li>
+<li><a href="#specify-custom-actions">Specify Open Strategy</a></li>
 </ul>
 </li>
 <li><a href="#_targets">Targets</a>
@@ -458,23 +464,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_browsing_window">Browsing window</a>
 <ul class="sectlevel2">
-<li><a href="#_overview">Overview</a></li>
-<li><a href="#_search_model">Search model</a></li>
-<li><a href="#_filter_model">Filter model</a></li>
+<li><a href="#_switch_filesfolders">Switch files/folders</a></li>
+<li><a href="#_open_folder_by_custom_open_strategy">Open folder by custom open strategy</a></li>
+<li><a href="#_run_apple_script">Run apple script</a></li>
+<li><a href="#_search_files">Search files</a></li>
 </ul>
 </li>
+<li><a href="#Script-spec">Script spec</a></li>
 <li><a href="#_get_finlighting">Get FinLighting</a></li>
 <li><a href="#_contact">Contact</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_preview">Preview</h2>
 <div class="sectionbody">
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
-<video width="800" height="400" controls>
-  <source src="video/preview.m4v" type="video/mp4">
+<div class="sect2">
+<h3 id="_filter_files">Filter files</h3>
+<div class="videoblock">
+<div class="content">
+<video src="video/preview-normal.mov" width="600" height="400" controls>
+Your browser does not support the video tag.
 </video>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_execute_scripts">Execute scripts</h3>
+<div class="videoblock">
+<div class="content">
+<video src="video/preview-script.mov" width="600" height="400" controls>
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -492,13 +517,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Binding a shortcut to a folder, and then activate file <code>browsing window</code> by the shortcut everywhere</p>
 </li>
 <li>
-<p>Type words to search files in <code>browsing window</code></p>
+<p>Type words to filter file in <code>browsing window</code></p>
 </li>
 <li>
-<p>Filter file in <code>browsing window</code></p>
+<p>Specify custom actions on selected files or folders (e.g. Opening folder by vscode)</p>
 </li>
 <li>
-<p>Specify custom actions on selected files or folders</p>
+<p>Specify custom apple script on selected files or folders</p>
 </li>
 </ol>
 </div>
@@ -555,9 +580,6 @@ Settings contains two parts:</p>
 <p><code>For Enter Key</code>: Specify action for Enter key</p>
 </li>
 <li>
-<p><code>Copy</code>: Copy selected item to Clipboard</p>
-</li>
-<li>
 <p><code>Copy Path</code>: Copy path of selected item to Clipboard</p>
 </li>
 <li>
@@ -567,25 +589,24 @@ Settings contains two parts:</p>
 <p><code>Move To Trash</code>: Move selected item to trash</p>
 </li>
 <li>
-<p><code>Open</code>: Open selected item</p>
+<p><code>Run Apple Script</code>: Run script for folder or file you selected, must follow the  <a href="#Script-spec">Script spec</a></p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="specify-custom-actions">Specify custom actions</h4>
-<div class="imageblock">
-<div class="content">
-<img src="images/custom-action.jpg" alt="500" width="400">
-</div>
-</div>
+<h4 id="specify-custom-actions">Specify Open Strategy</h4>
 <div class="paragraph">
-<p><code>custom actions</code> enable you to execute different actions on various targets. Imagine you have a folder
+<p><code>Open Strategy</code> enable you to execute different actions on various targets. Imagine you have a folder
 named <code>frontendProjects</code> that contains many projects like <code>website-a</code>, <code>website-b</code>,
 you like use <code>Visual Studio Code</code> to open and edit these projects,
 you can specify the <code>Match Rule</code> is <code>frontendProjects/*</code>, <code>Target Type</code> is <code>Folder</code>, <code>Action Type</code> is <code>Open with app</code>,
 and choose <code>Visual Studio Code</code> as <code>Executable Path</code>, once you press the shortcut you specified on <code>website-a</code> or <code>website-b</code>,
 <code>Visual Studio Code</code> will open these folders</p>
+</div>
+<div class="paragraph">
+<p>You can add the rules for opening specified folders by applications as example above, <code>Apple script</code> is supported as well,
+if <code>Action Type</code> is <code>Run with script</code>, you should choose the path of apple script as <code>Executable Path</code>, your script must follow  <a href="#Script-spec">Script spec</a></p>
 </div>
 <div class="paragraph">
 <p><code>FinLighting</code> supports various <code>Match Rule</code></p>
@@ -653,7 +674,7 @@ For example:</p>
 <h2 id="_browsing_window">Browsing window</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview">Overview</h3>
+<h3 id="_switch_filesfolders">Switch files/folders</h3>
 <div class="paragraph">
 <p>Once you create a <code>Target Folder</code> and binding shortcut to it, you can use the shortcut to open a <code>browsing window</code> everywhere.</p>
 </div>
@@ -676,47 +697,18 @@ For example:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><code>browsing window</code> supports two model as well.</p>
+<p>You can type words to filter folders/files or use arrow keys to change folders/files selected</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>search model: you can type words to search files or folders in the folder you are in</p>
-</li>
-<li>
-<p>filter model: you can type path like <code>down/img/</code> to filter or enter folders, deleting words means exit folders</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>You can switch these modes by <code>Tab</code> keyboard.</p>
-</div>
-<div class="paragraph">
-<p>Except for these models, you can always use Up-Arrow, Down-Arrow, Right-Arrow, and Left-Arrow keys to select a folder or file</p>
-</div>
-<div class="imageblock">
+<div class="videoblock">
 <div class="content">
-<img src="images/search.png" alt="500" width="600">
+<video src="video/change-files.mov" width="600" height="400" controls>
+Your browser does not support the video tag.
+</video>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_search_model">Search model</h3>
-<div class="paragraph">
-<p>To search a file, you can simply type the name of the file you&#8217;re looking for in the Input Field.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/search-direct.png" alt="500" width="600">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_filter_model">Filter model</h3>
-<div class="paragraph">
-<p>You can type a string in the <code>Input Field</code> to filter folders or files. once you input one <code>/</code>,
-you will enter the folder you selected</p>
-</div>
+<h3 id="_open_folder_by_custom_open_strategy">Open folder by custom open strategy</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/filter.jpg" alt="500" width="600">
@@ -732,6 +724,48 @@ in  <a href="#specify-custom-actions">Specify custom actions</a>
 , you can immediately open the folder with xcode</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_run_apple_script">Run apple script</h3>
+<div class="paragraph">
+<p>Once you select a file or folder, you can execute actions such as copy, copy path, move to trash, and execute script.
+To execute scripts, you must follow the  <a href="#Script-spec">Script spec</a></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="video/run-script.mov" width="600" height="400" controls>
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_files">Search files</h3>
+<div class="paragraph">
+<p>You can use Tab key to switch to search model to search files in folder you selected</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Script-spec">Script spec</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The script must be put to <code>~/Library/Application Scripts/ink.ypg.FinLighting</code></p>
+</li>
+<li>
+<p>The script must be declared as</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>on doAction(absolutPath)
+    // code
+end doAction</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -739,7 +773,7 @@ in  <a href="#specify-custom-actions">Specify custom actions</a>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<a class="image" href="https://apps.apple.com/us/app/finlighting/id6737697840?l=zh-Hans-CN&mt=12"><img src="images/app-store-badge.svg" alt="app store badge"></a>
+<a class="image" href="https://apps.apple.com/us/app/finlighting/id6737697840"><img src="images/app-store-badge.svg" alt="app store badge"></a>
 </div>
 </div>
 </div>
