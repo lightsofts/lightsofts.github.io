@@ -466,11 +466,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_switch_filesfolders">Switch files/folders</a></li>
 <li><a href="#_open_folder_by_custom_open_strategy">Open folder by custom open strategy</a></li>
-<li><a href="#_run_apple_script">Run apple script</a></li>
+<li><a href="#Run-apple-script">Run apple script</a></li>
 <li><a href="#_search_files">Search files</a></li>
 </ul>
 </li>
-<li><a href="#Script-spec">Script spec</a></li>
+<li><a href="#Script-spec">Script</a>
+<ul class="sectlevel2">
+<li><a href="#_script_spec">Script spec</a></li>
+<li><a href="#_examples">examples</a></li>
+</ul>
+</li>
 <li><a href="#_get_finlighting">Get FinLighting</a></li>
 <li><a href="#_contact">Contact</a></li>
 </ul>
@@ -506,7 +511,7 @@ Your browser does not support the video tag.
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>FinLighting</code> is a tool that allows you to open a file browsing window anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).</p>
+<p><code>FinLighting</code> is a tool that allows you to open a file browsing window anywhere. You can quickly locate file and execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).</p>
 </div>
 <div class="paragraph">
 <p><code>FinLighting</code> has many features:</p>
@@ -520,10 +525,10 @@ Your browser does not support the video tag.
 <p>Type words to filter file in <code>browsing window</code></p>
 </li>
 <li>
-<p>Specify custom actions on selected files or folders (e.g. Opening folder by vscode)</p>
+<p>Specify custom open strategy on selected files or folders (e.g. opening folder by vscode)</p>
 </li>
 <li>
-<p>Specify custom apple script on selected files or folders</p>
+<p>Run apple script on selected files or folders</p>
 </li>
 </ol>
 </div>
@@ -539,7 +544,7 @@ Settings contains two parts:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>General, some software also called <code>Global</code>, to set action settings</p>
+<p>General, some software also called <code>Global</code>, to set global settings</p>
 </li>
 <li>
 <p>Target, is to add folders and binding shortcuts to it.</p>
@@ -572,7 +577,7 @@ Settings contains two parts:</p>
 <div class="sect3">
 <h4 id="_action_on_selected_file">Action on Selected File</h4>
 <div class="paragraph">
-<p>In this section, you can specify local shortcut for every action,</p>
+<p>In this section, you can specify local shortcut for each action,</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -589,7 +594,7 @@ Settings contains two parts:</p>
 <p><code>Move To Trash</code>: Move selected item to trash</p>
 </li>
 <li>
-<p><code>Run Apple Script</code>: Run script for folder or file you selected, must follow the  <a href="#Script-spec">Script spec</a></p>
+<p><code>Run Apple Script</code>: Run custom script for folder in file browsing window as <a href="#Run-apple-script">Run apple script</a></p>
 </li>
 </ol>
 </div>
@@ -597,16 +602,33 @@ Settings contains two parts:</p>
 <div class="sect3">
 <h4 id="specify-custom-actions">Specify Open Strategy</h4>
 <div class="paragraph">
-<p><code>Open Strategy</code> enable you to execute different actions on various targets. Imagine you have a folder
-named <code>frontendProjects</code> that contains many projects like <code>website-a</code>, <code>website-b</code>,
-you like use <code>Visual Studio Code</code> to open and edit these projects,
-you can specify the <code>Match Rule</code> is <code>frontendProjects/*</code>, <code>Target Type</code> is <code>Folder</code>, <code>Action Type</code> is <code>Open with app</code>,
-and choose <code>Visual Studio Code</code> as <code>Executable Path</code>, once you press the shortcut you specified on <code>website-a</code> or <code>website-b</code>,
-<code>Visual Studio Code</code> will open these folders</p>
+<p><code>Open Strategy</code> enable you to specify how to open folders/files,such as by Applications or Apple Scripts</p>
 </div>
 <div class="paragraph">
-<p>You can add the rules for opening specified folders by applications as example above, <code>Apple script</code> is supported as well,
-if <code>Action Type</code> is <code>Run with script</code>, you should choose the path of apple script as <code>Executable Path</code>, your script must follow  <a href="#Script-spec">Script spec</a></p>
+<p>Imagine that you have a folder named <code>frontendProjects</code> that contains many projects like <code>website-a</code>, <code>website-b</code> and so on.
+You can specify following configuration:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Match Rule:  frontendProjects/*</p>
+</li>
+<li>
+<p>Target Type: <code>Folder</code></p>
+</li>
+<li>
+<p>Action Type:  <code>Open with app</code>,</p>
+</li>
+<li>
+<p>Executable Path: specify path of <code>Visual Studio Code</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Above configuration means all subfolder of frontendProjects will be opened by <code>Visual Studio Code</code></p>
+</div>
+<div class="paragraph">
+<p><code>Apple script</code> is supported as well when <code>Action Type</code> is <code>Run with script</code>, accordingly you should choose the path of apple script as <code>Executable Path</code>, The scripts must follow  <a href="#Script-spec">Script spec</a></p>
 </div>
 <div class="paragraph">
 <p><code>FinLighting</code> supports various <code>Match Rule</code></p>
@@ -628,8 +650,8 @@ if <code>Action Type</code> is <code>Run with script</code>, you should choose t
 </ol>
 </div>
 <div class="paragraph">
-<p>You can add many rules, but <code>FinLighting</code> always execute actions for first-matched rule
-A blank rule always be matched, <code>FinLighting</code> recommend you add blank rule to last as default action</p>
+<p>You can add many rules, but <code>FinLighting</code> always execute actions for first-matched rule,
+A blank rule always be matched. It&#8217;s recommended to add blank rule to last as default action</p>
 </div>
 </div>
 </div>
@@ -647,8 +669,10 @@ so you can quickly open the <code>browsing window</code> by the shortcut.</p>
 <div class="sect3">
 <h4 id="_not_displayed_subfolder">Not Displayed Subfolder</h4>
 <div class="paragraph">
-<p>Specify folders that will not be displayed in  <code>browsing window</code>, the rule is same with <a href="#specify-custom-actions">Specify custom actions</a>
-For example:</p>
+<p>Specify folders that will not be displayed in  <code>browsing window</code>, the rule is same with it in <a href="#specify-custom-actions">Specify custom actions</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -720,15 +744,15 @@ Your browser does not support the video tag.
 <div class="paragraph">
 <p>If you add rule to <code>Match Rule</code>: <code>xcodeProjects/**/*.xcodeproj</code>, and specify the action
 to <code>open with xcode</code>
-in  <a href="#specify-custom-actions">Specify custom actions</a>
+in  <a href="#specify-custom-actions">Specify open strategy</a>
 , you can immediately open the folder with xcode</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_apple_script">Run apple script</h3>
+<h3 id="Run-apple-script">Run apple script</h3>
 <div class="paragraph">
-<p>Once you select a file or folder, you can execute actions such as copy, copy path, move to trash, and execute script.
-To execute scripts, you must follow the  <a href="#Script-spec">Script spec</a></p>
+<p>Once you select a file or folder, you can execute actions such as copy (by command+c), copy path, move to trash, and execute script.
+To execute scripts, you must write apple scripts that follow <a href="#Script-spec">Script spec</a></p>
 </div>
 <div class="videoblock">
 <div class="content">
@@ -747,15 +771,17 @@ Your browser does not support the video tag.
 </div>
 </div>
 <div class="sect1">
-<h2 id="Script-spec">Script spec</h2>
+<h2 id="Script-spec">Script</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_script_spec">Script spec</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The script must be put to <code>~/Library/Application Scripts/ink.ypg.FinLighting</code></p>
+<p>The script must be put to <code>~/Library/Application Scripts/ink.ypg.FinLighting</code> manually as MacOS&#8217;s limitation</p>
 </li>
 <li>
-<p>The script must be declared as</p>
+<p>The script must be declared as following</p>
 </li>
 </ol>
 </div>
@@ -764,6 +790,66 @@ Your browser does not support the video tag.
 <pre>on doAction(absolutPath)
     // code
 end doAction</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">examples</h3>
+<div class="listingblock">
+<div class="title">copy content</div>
+<div class="content">
+<pre class="highlight"><code class="language-applescript" data-lang="applescript">on doAction{absolutPath}
+    set fileOrFolder to POSIX file absolutPath
+    set the clipboard to fileOrFolder
+end doAction</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">copy path</div>
+<div class="content">
+<pre class="highlight"><code class="language-applescript" data-lang="applescript">on doAction{absolutPath}
+    set the clipboard to absolutPath
+end doAction</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">show file/folder in Finder</div>
+<div class="content">
+<pre class="highlight"><code class="language-applescript" data-lang="applescript">on doAction(absolutPath)
+    tell application "Finder"
+        activate
+        set targetItem to POSIX file absolutPath as alias
+        reveal targetItem
+    end tell
+end doAction</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">cleanup all files in specified folder</div>
+<div class="content">
+<pre class="highlight"><code class="language-applescript" data-lang="applescript">on doAction(absolutPath)
+    set targetFolder to POSIX file absolutPath as alias
+    tell application "Finder"
+        if (exists folder targetFolder) then
+            set folderContents to every item of targetFolder
+            repeat with itemRef in folderContents
+                move itemRef to trash
+            end repeat
+        end if
+    end tell
+end doAction</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">open specified file/folder by Visual Studio Code through shell</div>
+<div class="content">
+<pre class="highlight"><code class="language-applescript" data-lang="applescript">on doAction{absolutPath}
+    do shell script "/usr/local/bin/code "&amp;absolutPath
+end doAction</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have useful scripts, welcome to share with me by Email, I will put it to this document, or submit PR to <a href="https://github.com/lightsofts/lightsofts.github.io/blob/main/finlighting/help.adoc">lightsofts Github</a> directly</p>
 </div>
 </div>
 </div>

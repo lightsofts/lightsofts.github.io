@@ -21,21 +21,21 @@ video::video/preview-script.mov[width=600, height=400]
 
 == Introduction
 
-`FinLighting` is a tool that allows you to open a file browsing window anywhere. You can quickly locate file execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).
+`FinLighting` is a tool that allows you to open a file browsing window anywhere. You can quickly locate file and execute various actions such as copy, paste, open folder or file by application, etc (maybe requires enabling accessibility permissions).
 
 `FinLighting` has many features:
 
 . Binding a shortcut to a folder, and then activate file `browsing window` by the shortcut everywhere
 . Type words to filter file in `browsing window`
-. Specify custom actions on selected files or folders (e.g. Opening folder by vscode)
-. Specify custom apple script on selected files or folders
+. Specify custom open strategy on selected files or folders (e.g. opening folder by vscode)
+. Run apple script on selected files or folders
 
 ==  Settings
 
 You can open the settings window from the menu bar.
 Settings contains two parts:
 
-. General, some software also called `Global`, to set action settings
+. General, some software also called `Global`, to set global settings
 . Target, is to add folders and binding shortcuts to it.
 
 === General
@@ -53,26 +53,31 @@ General includes some basic configuration options:
 
 ==== Action on Selected File
 
-In this section, you can specify local shortcut for every action,
+In this section, you can specify local shortcut for each action,
 
 . `For Enter Key`: Specify action for Enter key
 . `Copy Path`: Copy path of selected item to Clipboard
 . `Copy Paste` : Copy and paste selected item to work space you are working on
 . `Move To Trash`: Move selected item to trash
-. `Run Apple Script`: Run script for folder or file you selected, must follow the  <<Script-spec,Script spec>>
+. `Run Apple Script`: Run custom script for folder in file browsing window as <<Run-apple-script>>
 
 [[specify-custom-actions]]
 ==== Specify Open Strategy
 
-`Open Strategy` enable you to execute different actions on various targets. Imagine you have a folder
-named `frontendProjects` that contains many projects like `website-a`, `website-b`,
-you like use `Visual Studio Code` to open and edit these projects,
-you can specify the `Match Rule` is `frontendProjects/*`, `Target Type` is `Folder`, `Action Type` is `Open with app`,
-and choose `Visual Studio Code` as `Executable Path`, once you press the shortcut you specified on `website-a` or `website-b`,
-`Visual Studio Code` will open these folders
+`Open Strategy` enable you to specify how to open folders/files,such as by Applications or Apple Scripts
 
-You can add the rules for opening specified folders by applications as example above, `Apple script` is supported as well,
-if `Action Type` is `Run with script`, you should choose the path of apple script as `Executable Path`, your script must follow  <<Script-spec,Script spec>>
+Imagine that you have a folder named `frontendProjects` that contains many projects like `website-a`, `website-b` and so on.
+You can specify following configuration:
+
+. Match Rule:  frontendProjects/*
+. Target Type: `Folder`
+. Action Type:  `Open with app`,
+. Executable Path: specify path of `Visual Studio Code`
+
+
+Above configuration means all subfolder of frontendProjects will be opened by `Visual Studio Code`
+
+`Apple script` is supported as well when `Action Type` is `Run with script`, accordingly you should choose the path of apple script as `Executable Path`, The scripts must follow  <<Script-spec,Script spec>>
 
 `FinLighting` supports various `Match Rule`
 
@@ -81,8 +86,8 @@ if `Action Type` is `Run with script`, you should choose the path of apple scrip
 . `pass:[frontendProjects/**]` means all folders or files in frontendProjects
 . `pass:[frontendProjects/**/*(.jpg|.png)]` means all jpg or png files in frontendProjects
 
-You can add many rules, but `FinLighting` always execute actions for first-matched rule
-A blank rule always be matched, `FinLighting` recommend you add blank rule to last as default action
+You can add many rules, but `FinLighting` always execute actions for first-matched rule,
+A blank rule always be matched. It's recommended to add blank rule to last as default action
 
 === Targets
 
@@ -94,7 +99,8 @@ so you can quickly open the `browsing window` by the shortcut.
 
 ====  Not Displayed Subfolder
 
-Specify folders that will not be displayed in  `browsing window`, the rule is same with <<specify-custom-actions,Specify custom actions>>
+Specify folders that will not be displayed in  `browsing window`, the rule is same with it in <<specify-custom-actions,Specify custom actions>>.
+
 For example:
 
 . `pass:[*.png]` means all png files
@@ -130,14 +136,15 @@ Like the image above, we have a file whose path is xcodeProjects/demo, you can t
 
 If you add rule to `Match Rule`: `pass:[xcodeProjects/**/*.xcodeproj]`, and specify the action
 to `open with xcode`
-in  <<specify-custom-actions,Specify custom actions>>
+in  <<specify-custom-actions,Specify open strategy>>
 , you can immediately open the folder with xcode
 
 
+[[Run-apple-script]]
 === Run apple script
 
-Once you select a file or folder, you can execute actions such as copy, copy path, move to trash, and execute script.
-To execute scripts, you must follow the  <<Script-spec,Script spec>>
+Once you select a file or folder, you can execute actions such as copy (by command+c), copy path, move to trash, and execute script.
+To execute scripts, you must write apple scripts that follow <<Script-spec,Script spec>>
 
 video::video/run-script.mov[width=600, height=400]
 
@@ -147,9 +154,11 @@ video::video/run-script.mov[width=600, height=400]
 You can use Tab key to switch to search model to search files in folder you selected
 
 [[Script-spec]]
-== Script spec
-. The script must be put to `~/Library/Application Scripts/ink.ypg.FinLighting`
-. The script must be declared as
+== Script
+
+=== Script spec
+. The script must be put to `~/Library/Application Scripts/ink.ypg.FinLighting` manually as MacOS's limitation
+. The script must be declared as following
 [source]
 ----
 on doAction(absolutPath)
@@ -158,6 +167,35 @@ end doAction
 
 ----
 
+=== examples
+
+[source, applescript, title="copy content"]
+----
+include::./codes/copy.scpt[]
+----
+
+[source, applescript, title="copy path"]
+----
+include::./codes/copyPath.scpt[]
+----
+
+
+[source, applescript, title="show file/folder in Finder"]
+----
+include::./codes/showInFinder.scpt[]
+----
+
+[source, applescript, title="cleanup all files in specified folder"]
+----
+include::./codes/emptyFolder.scpt[]
+----
+
+[source, applescript, title="open specified file/folder by Visual Studio Code through shell"]
+----
+include::./codes/vscode.scpt[]
+----
+
+If you have useful scripts, welcome to share with me by Email, I will put it to this document, or submit PR to https://github.com/lightsofts/lightsofts.github.io/blob/main/finlighting/help.adoc[lightsofts Github] directly
 
 == Get FinLighting
 
